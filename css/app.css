@@ -1,0 +1,97 @@
+    #map {
+        height: 430px;
+    }
+    footer {
+        font-size: 12px;
+    }
+    .spk {
+        font-family: "Trebuchet MS";
+        color: black;
+    }
+    .spk .geo {
+        font-weight: bold;
+    }
+    .spk .arrow{
+        color: #FF8D22;
+    }
+    .splitLabel {
+        color: white;
+        font-weight: bold;
+    }
+    .chart rect {
+        fill: steelblue;
+    }
+    .chart text {
+        font: 10px sans-serif;
+        text-anchor: right;
+    }
+    .positive{
+        fill: #DEF0D7;
+        fill-opacity: 0.9;
+    }
+    .negative{
+        fill: darkred;
+        fill-opacity: 0.9;
+    }
+    .axis path,
+    .axis line {
+        fill: none;
+        stroke: grey;
+        shape-rendering: crispEdges;
+    }
+    .axis text {
+        color: black;
+        font-family: sans-serif;
+        font-size: 8px;
+        padding: 2px;
+    }
+    #data{
+      display:none;
+    }
+    .leaflet-div-icon {
+	    background: transparent;
+	    border: none;
+    }
+    .leaflet-marker-icon .number{
+	    position: relative;
+	    top: -37px;
+	    font-size: 12px;
+	    width: 10px;
+	    text-align: center;
+    }
+    .leaflet-label {
+        height: 20px;
+        width: 16px;
+        color: white;
+	    display: block;
+	    font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+	    font-weight: bold;
+	    position: absolute;
+	    -webkit-user-select: none;
+	      -moz-user-select: none;
+	      -ms-user-select: none;
+        user-select: none;
+	    pointer-events: none;
+	    white-space: nowrap;
+	    z-index: 6;
+        text-align: center;
+    }
+    .panel-heading{
+        text-align: center;
+    }
+    .panel-body{
+        text-align: center;
+    }
+    #upload-zone{
+        background-color: #DEF0D7;
+        font-size: 25px;
+        text-align: center;
+    }
+    .partners{
+        text-align:right;
+    }
+
+    .mm{
+        font-size: smaller;
+        font-style: italic;
+    }

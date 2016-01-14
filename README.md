@@ -1,17 +1,26 @@
 # tcxer
 
-Go and take a look at (snippets.sparkgeo.com/tcxer)[this app in action]. 
+Go and take a look at [this app in action](snippets.sparkgeo.com/tcxer). 
 
-It was made by (sparkgeo)[http://www.sparkgeo.com] with love using oipen source technology.
+It was made by [sparkgeo](http://www.sparkgeo.com) with love using oipen source technology.
 
 ###In creating this application, we thank:###
-[http://getbootstrap.com/](Twitter Bootstrap) for convenient layout code
-[https://twitter.com/tmcw](@tmcw)'s [https://github.com/mapbox/tcx"](tcx) code to carve up the tcx files into geojson
-[http://turfjs.org/](Turf) to measure geographic distance
-[http://filedropjs.org/](File drop) for the drag & drop
-[http://leafletjs.com/](LeafletJS) for the map
-[https://github.com/Leaflet/Leaflet.label/](Leaflet.label) for the split labelling
-[https://mapbox.com/](Mapbox) for serving background maptiles
-[http://d3js.org/](d3) for the graphs
-[http://fitbit.com](Fitbit) for inspriring this conversation - everyone should move more!
+[Twitter Bootstrap](http://getbootstrap.com/) for convenient layout code
+
+[@tmcw](https://twitter.com/tmcw)'s [tcx](https://github.com/mapbox/tcx") code to carve up the tcx files into geojson
+
+[Turf](http://turfjs.org/) to measure geographic distance
+
+[File drop](http://filedropjs.org/) for the drag & drop
+
+[LeafletJS](http://leafletjs.com/) for the map
+
+[Leaflet.label](https://github.com/Leaflet/Leaflet.label/) for the split labelling
+
+[Mapbox](https://mapbox.com/) for serving background maptiles
+
+[d3](http://d3js.org/) for the graphs
+
+[Fitbit](http://fitbit.com) for inspriring this conversation - everyone should move more!
+
 ###Yay, for all you wonderful people!###

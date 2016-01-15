@@ -123,8 +123,6 @@ function addData(result) {
       opacity: 1
     }).addTo(map);
 
-    map.fitBounds(geoWorkout);
-
     geoSplits = L.geoJson(splits, {
       pointToLayer: function (feature, latlng) {
         var content = ((splits.features.indexOf(feature) + 1)*splitM).toString();
@@ -141,6 +139,7 @@ function addData(result) {
       }
     }).addTo(map);
 
+    map.fitBounds(geoWorkout);
 }
 
 options = {input: false, type: 'text/xml'};

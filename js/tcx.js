@@ -79,7 +79,6 @@ var tcxParse = function(doc) {
                 gj.properties.altitude.push(parseFloat(nodeVal(get1(pts[j], 'AltitudeMeters'))));
                 gj.properties.altitudeDiff.push(parseFloat(nodeVal(get1(pts[j], 'AltitudeMeters'))) - startAlt);
                 gj.properties.heartrate.push(parseFloat(nodeVal(get1(pts[j], 'Value'))));
-
         }
         return {
             type: 'Feature',

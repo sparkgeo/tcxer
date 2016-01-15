@@ -31,7 +31,7 @@ function calcKmPerHour(distance, time) {
 
 function addData(result) {
     "use strict";
-    var splits, i, workout, deviceDistance, deviceSpeed, geoDistance, geoSpeed, time;
+    var splits, geom, i, workout, deviceDistance, deviceSpeed, geoDistance, geoSpeed, time, splitM;
     $('#upload-zone').attr("rows", "3");
     $('#upload-zone').text("Nice, now try another...");
     $('#data').css("display", "block");
@@ -48,11 +48,45 @@ function addData(result) {
     }
 
     workout = tcxParse(result);
+
+    splits = {
+        "type": "FeatureCollection",
+        "features": []
+    };
+
+    geom = {
+        "type": "Feature",
+        "geometry": {
+            "type": "LineString",
+            "coordinates": []
+        }
+    };
+
+    for (var f in workout.features[0].geometry.coordinates){
+        if (!isNaN(parseFloat(workout.features[0].geometry.coordinates[f]))){
+            geom.geometry.coordinates.push(workout.features[0].geometry.coordinates[f]);
+        }
+    }
+
     deviceDistance = (workout.properties.totalMeters / 1000).toFixed(1)
-    geoDistance = turf.lineDistance(workout.features[0], 'kilometers').toFixed(1)
+    geoDistance = turf.lineDistance(geom, 'kilometers').toFixed(1)
     deviceSpeed = calcKmPerHour(deviceDistance, workout.properties.totalSeconds);
     geoSpeed = calcKmPerHour(geoDistance, workout.properties.totalSeconds);
     time = secondsToTime(workout.properties.totalSeconds);
+
+    if (geoDistance > 20){
+        splitM = 5;
+    } else if (geoDistance > 50){
+        splitM = 10;
+    } else {
+        splitM = 1;
+    }
+
+    i = splitM;
+    while (geoDistance - i > 0) {
+        splits.features.push(turf.along(geom, i, 'kilometers'));
+        i += splitM;
+    }
 
     $('#td-sport').html(workout.properties.sport);
     $('#td-time').html(time.h + ":" + time.m + ":" + time.s);
@@ -61,20 +95,10 @@ function addData(result) {
     $('#td-gDist').html(geoDistance + "km");
     $('#td-gSpeed').html(geoSpeed + "kph");
 
-    splits = {
-      "type": "FeatureCollection",
-      "features": []
-    };
 
     if (map.hasLayer(geoWorkout)) {
       map.removeLayer(geoWorkout);
       map.removeLayer(geoSplits);
-    }
-
-    i = 1;
-    while (geoDistance - i > 0) {
-        splits.features.push(turf.along(workout.features[0], i, 'kilometers'));
-        i += 1;
     }
 
     if (isNaN(parseFloat(workout.properties.altitude[0]))) {
@@ -93,7 +117,7 @@ function addData(result) {
       $('#mm-hrt').html("(" + mmHrt[0] + "bpm - " + mmHrt[1] + "bpm)");
     }
 
-    geoWorkout = L.geoJson(workout.features[0].geometry, {
+    geoWorkout = L.geoJson(geom, {
       weight: 4,
       color: trailGreen,
       opacity: 1
@@ -101,7 +125,7 @@ function addData(result) {
 
     geoSplits = L.geoJson(splits, {
       pointToLayer: function (feature, latlng) {
-        var content = (splits.features.indexOf(feature) + 1).toString();
+        var content = ((splits.features.indexOf(feature) + 1)*splitM).toString();
         return L.circleMarker(latlng, {
           color: trailGreen,
           fillColor: trailGreen,

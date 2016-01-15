@@ -74,10 +74,10 @@ function addData(result) {
     geoSpeed = calcKmPerHour(geoDistance, workout.properties.totalSeconds);
     time = secondsToTime(workout.properties.totalSeconds);
 
-    if (geoDistance > 20){
-        splitM = 5;
-    } else if (geoDistance > 50){
+    if (geoDistance > 100){
         splitM = 10;
+    } else if (geoDistance > 20){
+        splitM = 5;
     } else {
         splitM = 1;
     }
